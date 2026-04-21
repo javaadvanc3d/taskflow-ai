@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskFlow AI
 
-## Getting Started
+AI-powered Kanban board with semantic task search and a conversational assistant.
 
-First, run the development server:
+[![CI](https://github.com/YOUR_GITHUB_USER/taskflow-ai/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/YOUR_GITHUB_USER/taskflow-ai/actions/workflows/ci-cd.yml)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Supabase](https://img.shields.io/badge/Supabase-pgvector-3ECF8E?logo=supabase)
+
+## Features
+
+- **Kanban board** — drag-and-drop tasks across *Por hacer*, *En progreso*, and *Terminado* columns
+- **AI assistant** — RAG pipeline answers questions about your tasks using Voyage AI embeddings + Supabase pgvector
+- **Dual inference** — switch between Anthropic (Claude Sonnet 4.6) and Groq (LLaMA 3.3-70b) at runtime
+- **Voice input** — Web Speech API transcription feeds the chat (Chrome, `es-ES` locale)
+- **Auth** — Supabase email/password, session managed via httpOnly cookies + Next.js middleware
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router) + React 19 |
+| Language | TypeScript 5 (strict) |
+| Styling | Tailwind CSS v4 + shadcn/ui |
+| Database | Supabase (PostgreSQL + pgvector) |
+| Auth | Supabase Auth + `@supabase/ssr` |
+| Drag & Drop | @dnd-kit |
+| Embeddings | Voyage AI `voyage-3.5` (1024-dim halfvec) |
+| AI inference | Anthropic Claude Sonnet 4.6 / Groq LLaMA 3.3-70b |
+
+## Prerequisites
+
+- Node.js 20+
+- A [Supabase](https://supabase.com) project with the `pgvector` extension enabled
+- API keys for [Anthropic](https://console.anthropic.com), [Voyage AI](https://www.voyageai.com), and [Groq](https://console.groq.com)
+
+## Setup
+
+### 1. Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create `.env.local` at the project root:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 
-## Learn More
+ANTHROPIC_API_KEY=sk-ant-...
+VOYAGE_API_KEY=pa-...
+GROQ_API_KEY=gsk_...
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Run database migrations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run the SQL files in order against your Supabase project (via the SQL editor or Supabase CLI):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+supabase/migrations/001_profiles.sql
+supabase/migrations/002_tasks.sql
+supabase/migrations/003_rls.sql
+supabase/migrations/004_enable_vector.sql
+supabase/migrations/005_task_embeddings.sql
+supabase/migrations/006_match_embeddings.sql
+```
 
-## Deploy on Vercel
+### 4. Start development server
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev   # http://localhost:3000
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The root `/` is a public demo with mock data. The full authenticated experience is at `/dashboard`.
+
+### 5. Backfill embeddings (once, after migrations)
+
+```bash
+npx ts-node -r dotenv/config src/scripts/embed-all-tasks.ts
+```
+
+## Testing
+
+```bash
+npm test                 # Unit tests (Vitest)
+npm run test:coverage    # Unit tests + v8 coverage report
+npm run test:e2e         # End-to-end tests (Playwright, requires dev server)
+npm run test:e2e:ui      # Playwright interactive UI
+```
+
+E2E tests require two additional variables in `.env.local`:
+
+```env
+E2E_USER_EMAIL=your-test-user@example.com
+E2E_USER_PASSWORD=your-test-password
+```
+
+## Deployment
+
+The app deploys to Vercel automatically on every push to `main` via GitHub Actions (after CI passes). See `.github/workflows/ci-cd.yml` and `CONTRIBUTING.md` for the required secrets.
+
+For a manual deploy:
+
+```bash
+vercel deploy --prod
+```

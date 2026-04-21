@@ -1,0 +1,120 @@
+- generic:
+  - button "Open Next.js Dev Tools" [ref=e24] [cursor=pointer]:
+    - img [ref=e25]
+  - alert
+  - generic:
+    - banner:
+      - generic:
+        - generic:
+          - img
+        - generic: TaskFlow AI
+      - button [expanded]:
+        - img
+        - text: Nueva Tarea
+      - generic:
+        - button:
+          - generic: U
+          - generic: usuario-a@test.com
+          - img
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=2]: Por hacer
+              - generic: "4"
+            - generic:
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                    - paragraph: Crear componente Kanban
+                    - paragraph: UI con drag and drop
+                  - img
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                    - paragraph: Demo MCP en vivo
+                  - img
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                    - paragraph: Demo MCP en vivo
+                  - img
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                    - paragraph: Demo MCP usando Playwright
+                  - img
+          - generic:
+            - generic:
+              - heading [level=2]: En progreso
+              - generic: "1"
+            - generic:
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: MEDIA
+                    - paragraph: Implementar RAG
+                    - paragraph: Chat con contexto de tareas
+                  - img
+          - generic:
+            - generic:
+              - heading [level=2]: Terminado
+              - generic: "1"
+            - generic:
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                      - img
+                    - paragraph: Configurar Supabase
+                    - paragraph: Setup inicial del proyecto
+                  - img
+        - status
+      - generic:
+        - heading [level=2]: Tu asistente IA
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - img
+                - generic: Asistente AI
+              - generic:
+                - button: Anthropic
+                - button: Groq
+            - generic:
+              - paragraph: "Pregúntame sobre tus tareas. Ej: \"¿Qué tareas tengo pendientes?\" o \"Muéstrame las tareas de alta prioridad\""
+            - generic:
+              - generic:
+                - textbox:
+                  - /placeholder: Pregunta sobre tus tareas…
+                - button:
+                  - img
+                - button [disabled]:
+                  - img
+  - dialog "Nueva Tarea" [ref=e172]:
+    - heading "Nueva Tarea" [level=2] [ref=e174]
+    - generic [ref=e175]:
+      - generic [ref=e176]:
+        - generic [ref=e177]: Título
+        - textbox "Describe la tarea…" [active] [ref=e178]
+      - generic [ref=e179]:
+        - generic [ref=e180]: Prioridad
+        - combobox [ref=e181]:
+          - generic: MEDIA
+          - img
+        - combobox [ref=e182]
+      - button "Crear tarea" [disabled] [ref=e184]
+    - button "Close" [ref=e185]:
+      - img
+      - generic [ref=e186]: Close

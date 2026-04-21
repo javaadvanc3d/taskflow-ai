@@ -1,0 +1,136 @@
+- generic:
+  - button "Open Next.js Dev Tools" [ref=e24] [cursor=pointer]:
+    - img [ref=e25]
+  - alert
+  - generic:
+    - banner:
+      - generic:
+        - generic:
+          - img
+        - generic: TaskFlow AI
+      - button [expanded]:
+        - img
+        - text: Nueva Tarea
+      - generic:
+        - button:
+          - generic: U
+          - generic: usuario-a@test.com
+          - img
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=2]: Por hacer
+              - generic: "4"
+            - generic:
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                    - paragraph: Crear componente Kanban
+                    - paragraph: UI con drag and drop
+                  - img
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                    - paragraph: Demo MCP en vivo
+                  - img
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                    - paragraph: Demo MCP en vivo
+                  - img
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                    - paragraph: Demo MCP usando Playwright
+                  - img
+          - generic:
+            - generic:
+              - heading [level=2]: En progreso
+              - generic: "1"
+            - generic:
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: MEDIA
+                    - paragraph: Implementar RAG
+                    - paragraph: Chat con contexto de tareas
+                  - img
+          - generic:
+            - generic:
+              - heading [level=2]: Terminado
+              - generic: "1"
+            - generic:
+              - button:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: ALTA
+                      - img
+                    - paragraph: Configurar Supabase
+                    - paragraph: Setup inicial del proyecto
+                  - img
+        - status
+      - generic:
+        - heading [level=2]: Tu asistente IA
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - img
+                - generic: Asistente AI
+              - generic:
+                - button: Anthropic
+                - button: Groq
+            - generic:
+              - paragraph: "Pregúntame sobre tus tareas. Ej: \"¿Qué tareas tengo pendientes?\" o \"Muéstrame las tareas de alta prioridad\""
+            - generic:
+              - generic:
+                - textbox:
+                  - /placeholder: Pregunta sobre tus tareas…
+                - button:
+                  - img
+                - button [disabled]:
+                  - img
+  - dialog:
+    - generic:
+      - heading [level=2]: Nueva Tarea
+    - generic:
+      - generic:
+        - generic: Título
+        - textbox:
+          - /placeholder: Describe la tarea…
+          - text: Demo MCP usando Playwright+
+      - generic:
+        - generic: Prioridad
+        - combobox [expanded]:
+          - generic: MEDIA
+          - img
+        - combobox
+      - generic:
+        - button: Crear tarea
+    - button:
+      - img
+      - generic: Close
+  - listbox [ref=e187]:
+    - option "BAJA" [ref=e188]:
+      - generic [ref=e189]: BAJA
+    - option "MEDIA" [active] [selected] [ref=e190]:
+      - generic:
+        - generic:
+          - img
+      - generic [ref=e191]: MEDIA
+    - option "ALTA" [ref=e192]:
+      - generic [ref=e193]: ALTA
+    - option "CRÍTICA" [ref=e194]:
+      - generic [ref=e195]: CRÍTICA

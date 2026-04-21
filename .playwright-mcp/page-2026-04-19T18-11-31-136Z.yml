@@ -1,0 +1,93 @@
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e24] [cursor=pointer]:
+    - img [ref=e25]
+  - alert [ref=e28]
+  - generic [ref=e29]:
+    - banner [ref=e30]:
+      - generic [ref=e31]:
+        - img [ref=e33]
+        - generic [ref=e34]: TaskFlow AI
+      - button "Nueva Tarea" [ref=e35]:
+        - img [ref=e36]
+        - text: Nueva Tarea
+      - button "U usuario-a@test.com" [ref=e38]:
+        - generic [ref=e39]: U
+        - generic [ref=e40]: usuario-a@test.com
+        - img [ref=e41]
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]:
+              - heading "Por hacer" [level=2] [ref=e48]
+              - generic [ref=e49]: "4"
+            - generic [ref=e50]:
+              - button "ALTA Crear componente Kanban UI con drag and drop" [ref=e51]:
+                - generic [ref=e52]:
+                  - generic [ref=e53]:
+                    - generic [ref=e55]: ALTA
+                    - paragraph [ref=e56]: Crear componente Kanban
+                    - paragraph [ref=e57]: UI con drag and drop
+                  - img [ref=e58]
+              - button "ALTA Demo MCP en vivo" [ref=e65]:
+                - generic [ref=e66]:
+                  - generic [ref=e67]:
+                    - generic [ref=e69]: ALTA
+                    - paragraph [ref=e70]: Demo MCP en vivo
+                  - img [ref=e71]
+              - button "ALTA Demo MCP en vivo" [ref=e78]:
+                - generic [ref=e79]:
+                  - generic [ref=e80]:
+                    - generic [ref=e82]: ALTA
+                    - paragraph [ref=e83]: Demo MCP en vivo
+                  - img [ref=e84]
+              - button "ALTA Demo MCP usando Playwright" [ref=e91]:
+                - generic [ref=e92]:
+                  - generic [ref=e93]:
+                    - generic [ref=e95]: ALTA
+                    - paragraph [ref=e96]: Demo MCP usando Playwright
+                  - img [ref=e97]
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - heading "En progreso" [level=2] [ref=e106]
+              - generic [ref=e107]: "1"
+            - button "MEDIA Implementar RAG Chat con contexto de tareas" [ref=e109]:
+              - generic [ref=e110]:
+                - generic [ref=e111]:
+                  - generic [ref=e113]: MEDIA
+                  - paragraph [ref=e114]: Implementar RAG
+                  - paragraph [ref=e115]: Chat con contexto de tareas
+                - img [ref=e116]
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - heading "Terminado" [level=2] [ref=e125]
+              - generic [ref=e126]: "1"
+            - button "ALTA Configurar Supabase Setup inicial del proyecto" [ref=e128]:
+              - generic [ref=e129]:
+                - generic [ref=e130]:
+                  - generic [ref=e131]:
+                    - generic [ref=e132]: ALTA
+                    - img [ref=e133]
+                  - paragraph [ref=e135]: Configurar Supabase
+                  - paragraph [ref=e136]: Setup inicial del proyecto
+                - img [ref=e137]
+        - status [ref=e144]
+      - generic [ref=e145]:
+        - heading "Tu asistente IA" [level=2] [ref=e146]
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - generic [ref=e150]:
+              - img [ref=e151]
+              - generic [ref=e154]: Asistente AI
+            - generic [ref=e155]:
+              - button "Anthropic" [ref=e156]
+              - button "Groq" [ref=e157]
+          - paragraph [ref=e159]:
+            - text: Pregúntame sobre tus tareas.
+            - text: "Ej: \"¿Qué tareas tengo pendientes?\" o \"Muéstrame las tareas de alta prioridad\""
+          - generic [ref=e161]:
+            - textbox "Pregunta sobre tus tareas…" [ref=e162]
+            - button "Dictado por voz (solo Chrome)" [ref=e163]:
+              - img [ref=e164]
+            - button [disabled] [ref=e167]:
+              - img [ref=e168]
