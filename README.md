@@ -108,3 +108,5 @@ For a manual deploy:
 ```bash
 vercel deploy --prod
 ```
+
+## Cambio para validar CI/CD
